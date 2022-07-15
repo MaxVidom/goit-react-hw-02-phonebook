@@ -17,7 +17,11 @@ class App extends Component {
 
   addContact = (name, number) => {
     const { contacts } = this.state;
-    if (contacts.some(contact => contact.name === name)) {
+    const normalizedName = name.toLowerCase();
+    if (
+      contacts.some(contact => contact.name.toLowerCase() === normalizedName)
+    ) {
+      alert(`${name} is already in contacts`);
       return;
     }
     const contact = {
